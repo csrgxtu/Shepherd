@@ -1,13 +1,18 @@
 package main
 
 import (
+  "fmt"
+  
   "github.com/go-martini/martini"
   "github.com/martini-contrib/render"
 
   "Shepherd/controllers"
+  "Shepherd/confs"
 )
 
 func main() {
+  fmt.Println(confs.ReadConfig())
+
   m := martini.Classic()
 
   m.Use(render.Renderer())
@@ -16,11 +21,6 @@ func main() {
   m.Get("/gps", controllers.Read)
   m.Post("/gps", controllers.Update)
   m.Delete("/gps", controllers.Delete)
-
-  m.Get("/", func(r render.Render){
-    // r.HTML(200, "hello", "jeremy")
-    r.JSON(200, map[string]interface{}{"hello": "world"})
-  })
 
   m.Run()
 }

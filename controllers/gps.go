@@ -12,7 +12,7 @@ func Create(r render.Render) {
   rt.Code = 200
   rt.Msg = "Successful"
   rt.ResNum = 1
-  
+
   r.JSON(200, rt)
 }
 
