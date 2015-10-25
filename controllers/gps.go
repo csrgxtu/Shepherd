@@ -1,5 +1,9 @@
 package controllers
 
+import (
+  // "Shepherd/models"
+)
+
 func Create() string {
   return "Create GPS Data"
 }
