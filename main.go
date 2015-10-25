@@ -2,35 +2,20 @@ package main
 
 import (
   "github.com/go-martini/martini"
+
+  "Shepherd/controllers"
 )
 
 func main() {
   m := martini.Classic()
 
-  m.Put("/gps", func() string {
-    return "create gps data"
-  })
-
-  m.Get("/gps", func() string {
-    return "get gps data"
-  })
-  // m.Get("/gps/:id", func() string {
-  //   return "get a specific gps data"
-  // })
-  // m.Get("/gps/:imei", func() string {
-  //   return "get gps data related to a device"
-  // })
-
-  m.Post("/gps", func() string {
-    return "update gps data"
-  })
-
-  m.Delete("/gps", func() string {
-    return "delete gps data"
-  })
+  m.Put("/gps", controllers.Create)
+  m.Get("/gps", controllers.Read)
+  m.Post("/gps", controllers.Update)
+  m.Delete("/gps", controllers.Delete)
 
   m.Get("/", func() string {
-    return "Hello world!"
+    return "Welcome to Shepherd Project!"
   })
 
   m.Run()
