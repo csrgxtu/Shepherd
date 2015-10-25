@@ -1,11 +1,19 @@
 package controllers
 
 import (
-  // "Shepherd/models"
+  "github.com/martini-contrib/render"
+
+  "Shepherd/models"
 )
 
-func Create() string {
-  return "Create GPS Data"
+func Create(r render.Render) {
+  var rt models.Result
+
+  rt.Code = 200
+  rt.Msg = "Successful"
+  rt.ResNum = 1
+  
+  r.JSON(200, rt)
 }
 
 func Read() string {
