@@ -4,14 +4,13 @@ import (
   "github.com/martini-contrib/render"
 
   "Shepherd/models"
+  "Shepherd/inits"
 )
 
 func Create(r render.Render) {
   var rt models.Result
 
-  rt.Code = 200
-  rt.Msg = "Successful"
-  rt.ResNum = 1
+  
 
   r.JSON(200, rt)
 }
