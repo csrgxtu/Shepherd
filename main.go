@@ -2,17 +2,19 @@ package main
 
 import (
   "fmt"
-  
+
   "github.com/go-martini/martini"
   "github.com/martini-contrib/render"
 
   "Shepherd/controllers"
-  "Shepherd/confs"
+  // "Shepherd/confs"
+  "Shepherd/inits"
 )
 
 func main() {
-  fmt.Println(confs.ReadConfig())
-
+  // fmt.Println(confs.ReadConfig())
+  fmt.Println(inits.Session)
+  
   m := martini.Classic()
 
   m.Use(render.Renderer())
