@@ -34,12 +34,13 @@ func Create(r render.Render, gps models.Gps) {
 
 // /gps/:start/:offset
 func Read(r render.Render, params martini.Params) {
+  var imei = params["imei"]
   var start, _ = strconv.Atoi(params["start"])
   var offset, _ = strconv.Atoi(params["offset"])
   var rt models.Result
   var gps models.Gps
 
-  ngps, err := services.Read(gps, start, offset)
+  ngps, err := services.Read(gps, imei, start, offset)
   if err != nil {
     rt.Code = 500
     rt.Msg = "Server Internal Error"
@@ -56,10 +57,7 @@ func Read(r render.Render, params martini.Params) {
   r.JSON(200, rt)
 }
 
-func Update() string {
-  return "Update GPS Data"
-}
-
-func Delete() string {
-  return "Delete GPS Data"
+func GetDistance(r render.Render, params martini.Params) {
+  var rt models.Result
+  r.JSON(200, rt)
 }
