@@ -1,3 +1,4 @@
 github.com/go-martini/martini
 github.com/martini-contrib/render
+github.com/martini-contrib/binding
 gopkg.in/mgo.v2
