@@ -1,16 +1,17 @@
 package controllers
 
 import (
+  "fmt"
+  
   "github.com/martini-contrib/render"
 
   "Shepherd/models"
-  // "Shepherd/inits"
 )
 
-func Create(r render.Render) {
+func Create(r render.Render, gps models.Gps) {
   var rt models.Result
 
-
+  fmt.Println(gps)
 
   r.JSON(200, rt)
 }
