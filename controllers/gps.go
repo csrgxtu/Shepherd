@@ -4,13 +4,13 @@ import (
   "github.com/martini-contrib/render"
 
   "Shepherd/models"
-  "Shepherd/inits"
+  // "Shepherd/inits"
 )
 
 func Create(r render.Render) {
   var rt models.Result
 
-  
+
 
   r.JSON(200, rt)
 }

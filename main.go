@@ -1,28 +1,18 @@
 package main
 
 import (
-  "fmt"
-
-  "github.com/go-martini/martini"
-  "github.com/martini-contrib/render"
+  // "github.com/go-martini/martini"
+  // "github.com/martini-contrib/render"
 
   "Shepherd/controllers"
-  // "Shepherd/confs"
   "Shepherd/inits"
 )
 
 func main() {
-  // fmt.Println(confs.ReadConfig())
-  fmt.Println(inits.Session)
-  
-  m := martini.Classic()
+  inits.Shepherd.Put("/gps", controllers.Create)
+  inits.Shepherd.Get("/gps", controllers.Read)
+  inits.Shepherd.Post("/gps", controllers.Update)
+  inits.Shepherd.Delete("/gps", controllers.Delete)
 
-  m.Use(render.Renderer())
-
-  m.Put("/gps", controllers.Create)
-  m.Get("/gps", controllers.Read)
-  m.Post("/gps", controllers.Update)
-  m.Delete("/gps", controllers.Delete)
-
-  m.Run()
+  inits.Shepherd.Run()
 }
