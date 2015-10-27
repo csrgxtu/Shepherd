@@ -19,6 +19,15 @@ func Create(r render.Render, gps models.Gps) {
   if err != nil {
     rt.Code = 500
     rt.Msg = "Server Internal Error"
+    rt.ResNum = 1
+    rt.Data = make([]models.Recs, 1)
+    rt.Data[0] = gps
+  } else {
+    rt.Code = 200
+    rt.Msg = "Successful"
+    rt.ResNum = 1
+    rt.Data = make([]models.Recs, 1)
+    rt.Data[0] = gps
   }
 
   r.JSON(200, rt)

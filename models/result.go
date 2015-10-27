@@ -5,8 +5,8 @@ type (
     Code int32 `json:"code"`
     Msg string `json:"msg"`
     ResNum int32 `json:"num"`
-    Data []recs `json:"data"`
+    Data []Recs `json:"data"`
   }
 
-  recs interface{}
+  Recs interface{}
 )
