@@ -10,3 +10,8 @@ func Create(gps models.Gps)(ngps models.Gps, err error) {
   ngps = gps
   return
 }
+
+func Read(gps models.Gps, start, offset int)(ngps []models.Gps, err error) {
+  err = inits.Session.DB("shepherd").C("gps").Find(nil).Sort("-createdAt").Skip(start).Limit(offset).All(&ngps)
+  return
+}

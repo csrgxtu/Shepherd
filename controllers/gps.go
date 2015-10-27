@@ -2,8 +2,10 @@ package controllers
 
 import (
   "time"
+  "strconv"
 
   "labix.org/v2/mgo/bson"
+  "github.com/go-martini/martini"
   "github.com/martini-contrib/render"
 
   "Shepherd/models"
@@ -19,9 +21,6 @@ func Create(r render.Render, gps models.Gps) {
   if err != nil {
     rt.Code = 500
     rt.Msg = "Server Internal Error"
-    rt.ResNum = 1
-    rt.Data = make([]models.Recs, 1)
-    rt.Data[0] = gps
   } else {
     rt.Code = 200
     rt.Msg = "Successful"
@@ -33,8 +32,28 @@ func Create(r render.Render, gps models.Gps) {
   r.JSON(200, rt)
 }
 
-func Read() string {
-  return "Read GPS Data"
+// /gps/:start/:offset
+func Read(r render.Render, params martini.Params) {
+  var start, _ = strconv.Atoi(params["start"])
+  var offset, _ = strconv.Atoi(params["offset"])
+  var rt models.Result
+  var gps models.Gps
+
+  ngps, err := services.Read(gps, start, offset)
+  if err != nil {
+    rt.Code = 500
+    rt.Msg = "Server Internal Error"
+  } else {
+    rt.Code = 200
+    rt.Msg = "Successful"
+    rt.ResNum = int32(len(ngps))
+    rt.Data = make([]models.Recs, rt.ResNum)
+    for ix, value := range ngps {
+			rt.Data[ix] = value
+		}
+  }
+
+  r.JSON(200, rt)
 }
 
 func Update() string {
