@@ -1,0 +1,1 @@
+curl -H 'Content-Type: application/json' -X PUT -d '{"imei": "iphone5s", "loc": {"longitude": 23.1229, "latitude": 121.7843} }' http://localhost:3000/gps

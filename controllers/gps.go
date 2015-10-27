@@ -1,17 +1,25 @@
 package controllers
 
 import (
-  "fmt"
-  
+  "time"
+
+  "labix.org/v2/mgo/bson"
   "github.com/martini-contrib/render"
 
   "Shepherd/models"
+  "Shepherd/services"
 )
 
 func Create(r render.Render, gps models.Gps) {
+  gps.Id = bson.NewObjectId().Hex()
+  gps.CreatedAt = time.Now()
   var rt models.Result
 
-  fmt.Println(gps)
+  gps, err := services.Create(gps)
+  if err != nil {
+    rt.Code = 500
+    rt.Msg = "Server Internal Error"
+  }
 
   r.JSON(200, rt)
 }

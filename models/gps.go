@@ -6,14 +6,15 @@ import (
 
 type (
   Gps struct {
-    ID string `json:"id"`
-    IMEI string `json:"imei" binding:"required"`
-    CreatedAt time.Time `json:"createdAt"`
-    Loc loc `json:"loc" binding:"required"`
+    // ID bson.ObjectId `json:"id" bson:"_id,omitempty"`
+    Id string `json:"_id" bson:"_id,omitempty"`
+    IMEI string `json:"imei" bson:"imei" binding:"required"`
+    CreatedAt time.Time `json:"createdAt" bson:"createdAt"`
+    Loc loc `json:"loc" bson:"loc" binding:"required"`
   }
 
   loc struct {
-    Longitude float32 `json:"longitude"`
-    Latitude float32 `json:"latitude"`
+    Longitude float32 `json:"longitude" bson:"longitude"`
+    Latitude float32 `json:"latitude" bson:"latitude"`
   }
 )
