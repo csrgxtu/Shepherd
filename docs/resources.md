@@ -5,3 +5,4 @@
 [My Adventures in Coding](https://myadventuresincoding.wordpress.com/2011/10/02/mongodb-geospatial-queries/)  
 [Reading config files the Go way](http://blog.gopheracademy.com/advent-2014/reading-config-files-the-go-way/)  
 [REST API Best practices: Where to put parameters?](http://stackoverflow.com/questions/4024271/rest-api-best-practices-where-to-put-parameters)  
+[How to PUT a json object with an array using curl](http://stackoverflow.com/questions/15425446/how-to-put-a-json-object-with-an-array-using-curl)  
