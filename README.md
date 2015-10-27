@@ -1,2 +1,2 @@
-# ISU is short for I See You
+# Shepherd Is A Gps Related Project
 Use Golang, Martini implement an RESTful service
