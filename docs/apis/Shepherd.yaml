@@ -1,0 +1,131 @@
+swagger: '2.0'
+info:
+  title: Sheperd API
+  description: 这是Sheperd系统的接口
+  version: 1.0.0
+host: gps.csrgxtu.com
+schemes:
+  - http
+basePath: /
+produces:
+  - application/json
+paths:
+  /gps:
+    put:
+      summary: create a gps record
+      description: create a gps record
+      tags:
+        - Gps
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Gps'
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Results'
+          description: successful, see the actual data for info
+  
+  /gps/{start}/{offset}:
+    get:
+      summary: get gps information
+      description: get gps information
+      tags:
+        - Gps
+      produces:
+        - application/json
+      parameters:
+        - name: start
+          in: path
+          required: true
+          type: number
+          format: int
+        - name: offset
+          in: path
+          required: true
+          type: number
+          format: int
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Results'
+          description: check out the actual data for infomation
+  
+  /gps/{imei1}/{imei2}:
+    get:
+      summary: get the distance of two devices
+      description: get the distance fo two devices
+      tags:
+        - gps
+      produces:
+        - application/json
+      parameters:
+        - name: imei1
+          in: path
+          required: true
+          type: string
+        - name: imei2
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Results'
+          description: check out the actual data for infomation
+        
+        
+definitions:
+  Results:
+    type: object
+    properties:
+      code:
+        type: number
+        format: int
+        description: return code, should equal with http code
+      msg:
+        type: string
+        description: short message of the operation
+      num:
+        type: number
+        format: int
+        description: how many records returned this time
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Gps'
+  Gps:
+    type: object
+    properties:
+      _id:
+        type: string
+        description: id of the Gps record
+      imei:
+        type: string
+        description: serial number of the device
+      createdAt:
+        type: string
+        description: string version of the date
+      loc:
+        type: object
+        $ref: '#/definitions/Point'
+      
+  Point:
+    type: object
+    properties:
+      longitude:
+        type: number
+        format: double
+        description: longitude
+      latitude:
+        type: number
+        format: double
+        description: latitude
+
+  
