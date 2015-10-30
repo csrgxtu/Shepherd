@@ -8,6 +8,8 @@ import (
   "github.com/go-martini/martini"
   "github.com/martini-contrib/render"
 
+  "github.com/kellydunn/golang-geo"
+
   "Shepherd/models"
   "Shepherd/services"
 )
@@ -58,6 +60,24 @@ func Read(r render.Render, params martini.Params) {
 }
 
 func GetDistance(r render.Render, params martini.Params) {
+  var imei1 = params["imei1"]
+  var imei2 = params["imei2"]
   var rt models.Result
+
+  ngps, err := services.GetDistance(imei1, imei2)
+  if err != nil {
+    rt.Code = 500
+    rt.Msg = "Server Internal Error"
+  } else {
+    point1 := geo.NewPoint(float64(ngps[0].Loc.Longitude), float64(ngps[0].Loc.Latitude))
+    point2 := geo.NewPoint(float64(ngps[1].Loc.Longitude), float64(ngps[1].Loc.Latitude))
+    dist := point1.GreatCircleDistance(point2)
+
+    rt.Code = 200
+    rt.Msg = "Successful"
+    rt.ResNum = int32(1)
+    rt.Distance = dist
+  }
+
   r.JSON(200, rt)
 }

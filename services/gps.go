@@ -21,6 +21,11 @@ func Read(gps models.Gps, imei string, start, offset int)(ngps []models.Gps, err
   return
 }
 
-func GetDistance(gps models.Gps, imei1, imei2 string)(distance float32, err error) {
+func GetDistance(imei1, imei2 string)(ngps []models.Gps, err error) {
+  var gps models.Gps
+  err = inits.Session.DB("shepherd").C("gps").Find(bson.M{"imei": imei1}).Sort("-createdAt").Limit(1).One(&gps)
+  ngps = append(ngps, gps)
+  err = inits.Session.DB("shepherd").C("gps").Find(bson.M{"imei": imei2}).Sort("-createdAt").Limit(1).One(&gps)
+  ngps = append(ngps, gps)
   return
 }
