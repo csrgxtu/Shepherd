@@ -1,12 +1,13 @@
 package main
+
 //test
 import (
-  "Shepherd/inits"
-  "Shepherd/routers"
+	"Shepherd/inits"
+	"Shepherd/routers"
 )
 
 func main() {
-  routers.GpsRouters()
+	routers.GpsRouters()
 
-  inits.Shepherd.Run()
+	inits.Shepherd.Run()
 }
