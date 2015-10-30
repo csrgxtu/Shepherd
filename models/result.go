@@ -6,6 +6,7 @@ type (
     Msg string `json:"msg"`
     ResNum int32 `json:"num"`
     Data []Recs `json:"data"`
+    Distance float64 `json:"distance"`
   }
 
   Recs interface{}
