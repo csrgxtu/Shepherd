@@ -13,9 +13,9 @@ func GpsRouters() {
 	inits.Shepherd.Get("/gps/:start/:offset", controllers.Read)
 	inits.Shepherd.Get("/gps/:imei1/:imei2", controllers.GetDistance)
 	inits.Shepherd.NotFound(func() string {
-		return "this not router!!<br><h1>NOT FOUND<h1>"
+		return "this not router!! NOT FOUND"
 	})
-  inits.Shepherd.Put("/gps", binding.Bind(models.Gps{}), controllers.Create)
-  // inits.Shepherd.Get("/gps/:start/:offset", controllers.Read)
-  inits.Shepherd.Get("/gps/:imei1/:imei2", controllers.GetDistance)
+	inits.Shepherd.Put("/gps", binding.Bind(models.Gps{}), controllers.Create)
+	// inits.Shepherd.Get("/gps/:start/:offset", controllers.Read)
+	inits.Shepherd.Get("/gps/:imei1/:imei2", controllers.GetDistance)
 }
