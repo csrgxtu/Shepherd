@@ -17,4 +17,10 @@ type (
     Longitude float32 `json:"longitude" bson:"longitude"`
     Latitude float32 `json:"latitude" bson:"latitude"`
   }
+
+  User struct {
+    Id string `json:"_id" bson:"_id,omitempty"`
+    Username string `json:"Username" bson:"Username"`
+    Password string `json:"Password" bson"Password"`
+  }
 )

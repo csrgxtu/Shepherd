@@ -19,3 +19,7 @@ func GpsRouters() {
 	// inits.Shepherd.Get("/gps/:start/:offset", controllers.Read)
 	inits.Shepherd.Get("/gps/:imei1/:imei2", controllers.GetDistance)
 }
+
+func AuthRouters() {
+	inits.Shepherd.Post("/auth", binding.Bind(models.User{}), controllers.Auth)
+}

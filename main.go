@@ -8,6 +8,7 @@ import (
 
 func main() {
 	routers.GpsRouters()
+	routers.AuthRouters()
 
 	inits.Shepherd.RunOnAddr(":8000")
 }
