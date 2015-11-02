@@ -2,6 +2,7 @@ package routers
 
 import (
 	"github.com/martini-contrib/binding"
+	"github.com/martini-contrib/cors"
 
 	"Shepherd/controllers"
 	"Shepherd/inits"
@@ -21,5 +22,12 @@ func GpsRouters() {
 }
 
 func AuthRouters() {
-	inits.Shepherd.Post("/auth", binding.Bind(models.User{}), controllers.Auth)
+	allowCORSHandler := cors.Allow(&cors.Options{
+		AllowAllOrigins: true,
+		// AllowOrigins:     []string{"*"},
+		// AllowMethods:     []string{"POST", "GET"},
+		// AllowHeaders:     []string{"Origin"},
+	})
+
+	inits.Shepherd.Post("/auth", allowCORSHandler, binding.Bind(models.User{}), controllers.Auth)
 }

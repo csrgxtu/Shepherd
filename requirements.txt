@@ -3,3 +3,4 @@ github.com/martini-contrib/render
 github.com/martini-contrib/binding
 gopkg.in/mgo.v2
 github.com/kellydunn/golang-geo
+github.com/martini-contrib/cors

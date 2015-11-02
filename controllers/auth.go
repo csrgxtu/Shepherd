@@ -3,6 +3,7 @@ package controllers
 import (
   // "time"
   // "strconv"
+  "fmt"
 
   // "labix.org/v2/mgo/bson"
   // "github.com/go-martini/martini"
@@ -13,6 +14,7 @@ import (
 
 func Auth(r render.Render, user models.User) {
   var rt models.Result
+  fmt.Println(user)
 
   if user.Username == "archer" && user.Password == "archer" {
     rt.Code = 200
