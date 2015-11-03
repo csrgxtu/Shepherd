@@ -10,6 +10,5 @@ var Shepherd *martini.ClassicMartini
 func init() {
 	Shepherd = martini.Classic()
 	Shepherd.Use(martini.Static("public"))
-	Shepherd.Use(martini.Static("views"))
 	Shepherd.Use(render.Renderer())
 }
