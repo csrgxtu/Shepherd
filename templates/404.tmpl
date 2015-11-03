@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Page couldn't be found.</title>
+		<link rel="stylesheet" media="screen" href="/css/style.css">
+		
+		<script language="JavaScript">
+			function dosearch() {
+			var sf=document.searchform;
+			var submitto = sf.sengine.value + escape(sf.searchterms.value);
+			window.location.href = submitto;
+			return false;
+			}
+		</script>
+	</head>
+	<body>
+		
+		<div class="header">
+			<img src="/img/Logo_sample.png" />
+		</div>
+		
+		<p class="error">404</p>
+		
+		<div class="content">
+			<h2>page coulnd't be found</h2>
+			
+			<p class="text">
+				Oooooops… it looks like the page you were looking for does not exist anymore or is temporarily unavailable. You might want to search our website or browse our website. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+			
+				<!--<form name="searchform" onSubmit="return dosearch();">
+					<input type="hidden" name="sengine" value="http://www.baidu.com/search?q=site:www.yoursite.com+" />
+					<input type="text" name="searchterms" class="inputform">
+					<input type="submit" name="SearchSubmit" value="Search" class="button"> 
+				</form>-->
+				<!-- Change www.yoursite.com to your website domain -->
+			</p>
+				
+			<p class="links">
+				<a id="button" href="/">&larr; Back</a> <a href="/">Homepage</a> <a href="#">Portfolio</a> <a href="#">About Us</a> <a href="#">Blog</a>
+				<!--These are links. You can change it to a page you want to by replacing the '#' with your url.-->
+			</p>
+		</div>
+		
+	</body>
+</html>
