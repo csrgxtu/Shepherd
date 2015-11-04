@@ -4,6 +4,8 @@
 	<title>READYCHAT</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script type="text/javascript" src="/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/jquery.md5.js"></script>
 	<!-- Bootstrap -->
 	<link href="/bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/bootstrap-3.3.5/dist/css/font-awesome.css" rel="stylesheet" />
@@ -72,18 +74,19 @@
 					I want to know, have you ever seen the rain?
 				</p>
 
-				<form class="margin-base-vertical" action="/userLogin" method="post">
+				<form class="margin-base-vertical" action="/userLogin" method="post" id = "loginto">
 					<p class="input-group">
 						<span class="input-group-addon"><span class=""><strong>email</strong></span></span>
-						<input type="text" class="form-control input-lg" name="email" placeholder="dishytianxiang@163.com" />
+						<input type="text" class="form-control input-lg" id = "email" name="email" placeholder="dishytianxiang@163.com" />
 						
 					</p>
 					<p>
-						password:<input type="password" class="form-control input-lg" name="passwd" />
+						password:<input type="password" class="form-control input-lg" id = "password" name="password" />
+						<input id="passwd" name="passwd" type="hidden" >
 					</p>
 					<p class="help-block text-center"><small>We won't send you spam. Unsubscribe at any time.</small></p>
 					<p class="text-center">
-						<button type="submit" class="btn btn-success btn-lg">Keep me posted</button>
+						<button type="button" class="btn btn-success btn-lg" onclick = "loginsubmit()">Keep me posted</button>
 					</p>
 					</span>
 				</form>
@@ -95,6 +98,22 @@
 			</div><!-- //main content -->
 		</div><!-- //row -->
 	</div> <!-- //container -->
-
+<script>
+	function loginsubmit(){
+		var obj=document.getElementById("loginto");
+			if($("#email").val()==""){
+				alert("please input email");
+			}else{
+				if($("#password").val()==""){
+					alert("please input passwd");
+				}else{
+					var  pass= $("#password").val();
+					var	hash = $.md5(pass);
+					$("#passwd").val(hash);
+					obj.submit();
+				}
+			}
+	}
+</script>
 </body>
 </html>
